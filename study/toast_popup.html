@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토스트 팝업</title>
+</head>
+<body>
+    <style>
+    .layer_pop.toast { position:fixed; top:50%; left:50%; min-width:322px; padding:14px; border-radius:8px; background:rgba(0, 0, 0, 0.9); -webkit-transform:translate(-50%); transform:translate(-50%); box-sizing:border-box; } 
+    .layer_pop.toast .text { font-size:14px; color:#fff; line-height:19px; letter-spacing:-.1px; text-align:center } 
+    </style>
+
+    <div class="layer_pop toast" style="display:none">
+		<p class="text">사용 가능한 금액을 초과하였습니다.</p>
+	</div>
+
+    <style>
+        .case_review{position:fixed;bottom:0px;left:10px;padding:4px 10px;background:rgba(0,0,0,.5);z-index:1000;font-size:12px;color:#fff;line-height:14px;}
+        .case_review.is-open{transform:translateY(200px)}
+        .case_review a{display:block;padding:4px 0;font-size:12px;color:#fff}
+        .ico_bubble{display:none}
+        .content.header_none{padding-top:0}
+    </style>
+    <div class="case_review">
+        <a href="#" class="toast_pop">포인트 보유금액 초과 토스트</a>
+    </div>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    $('.toast_pop').on('click',function(e){
+        e.preventDefault();
+    
+        $('.layer_pop.toast').show();
+        var time_cnt = setTimeout(function(){
+            $('.layer_pop.toast').fadeOut();
+        },3000);
+    })
+    </script>
+<!-- 설명 -->
+    <!-- <script type="text/javascript">
+    var cnt=3;
+    $('.caseview_btn').on('click',function(e){
+	//.caseview_btn 잡아서 이벤트 클릭을 하겠다.
+	e.preventDefault();
+	//function(e){} -> 이벤트 핸들러 : 특정요소에서 발생하는 이벤트를 처리하기 위해 사용
+	//a 태그나 submit 태그는 누르게 되면 href 를 통해 이동하거나 , 창이 새로고침 -> "preventDefault" 를 통해 이러한 동작을 막을수있음.
+	//cnt=3;
+	$('.layer_pop.toast').show();
+	// "$("").show()"; -> display 속성을 block 으로 바꾼다.
+	var time_cnt = setInterval(toast_time_cnt,1000);
+	// 호출 스케줄링[ setTimeout(), setInterval()]
+	//ㄴ setTimeout: 일정시간이 지난후에 함수를 실행하는 방법(단 한번만 실행)
+	//ㄴ setInterval: 일정 시간 간격을 두고 함수를 실행하는 방법(주기적으로 실행)
+	//문법:Let 변수 = setTimeout(func|code, [delay], [arg1], [arg2], ...) -> 호출스케줄링(func|code, [delay], [arg1], [arg2], ...)
+	//func|code:함수 , delay:대기시간,단위 밀리초(1000밀리초 = 1초,기본값 0), aelay: 함수에 전달하는 인수
+
+	//예시
+	// function sayHi(who, phrase) {
+	// alert( who + ' 님, ' + phrase );
+	// }
+	// setTimeout(sayHi, 1000, "홍길동", "안녕하세요."); // 홍길동 님, 안녕하세요.
+
+	//호출 스케줄링 취소[clerTimeout, clerinterval]
+	//ㄴ clerTimeout: "settimeout" 취소하고 싶을 사용 
+	//ㄴ clerInterval: "setinterval" 취소하고 싶을 사용
+
+	//심화
+	//중첩 setTimeout : 무언가를 일정 간격을 두고 실행하는 방법
+	//예시
+	// let delay = 5000;
+	// let timerId = setTimeout(function request() {
+	// ...요청 보내기...
+	// if (서버 과부하로 인한 요청 실패) {
+	// 	// 요청 간격을 늘립니다.
+	// 	delay *= 2;
+	// }
+	// timerId = setTimeout(request, delay);
+	// }, delay);
+    })
+
+    function toast_time_cnt(){
+        cnt--;
+        if(cnt===0){
+            $('.layer_pop.toast').hide();
+            // $("#tagID").hide(); -> display 속성을 none 으로 바꾼다.
+            clearInterval(time_cnt);
+        }
+    }
+
+    $('').fadeOut();
+</script> -->
+<!-- //설명 -->
+</body>
+</html>
