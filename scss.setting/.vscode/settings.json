@@ -1,0 +1,48 @@
+{
+    "liveServer.settings.port": 5502,
+
+    // 세팅 파일 경로 
+    "liveSassCompile.settings.formats": [
+        {
+            //들여쓰기 되어 있는 표준적인 형태
+            "format": "expanded",
+
+            //들여쓰기 없이 한줄로 되어 있는 형태
+            // "format": "compact",
+
+            //빈공간 없이 압축되어 있는 형태
+            // "format": "compressed ",
+
+            //확장자명
+            "extensionName": ".css",
+
+            //컴파일되는 파일의 경로
+            "savePath": "./assets/css"
+        },
+        {
+            "format": "expanded",
+            // "format": "compact",
+            "extensionName": ".css",
+            "savePath": "./assets/css"
+        }
+    ], 
+    
+    //세팅파일 경로
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+
+    //개발자 도구에서 css -> scss파일로 맵핑
+    "liveSassCompile.settings.generateMap": true,
+
+    // autoprefix - 크로스브라우징 해당 접두사를 추가
+    //autoprefix, will auto add perfix like -webkit- -moz-..
+    "liveSassCompile.settings.autoprefix": [
+        //브라우저 사용점유율 1%이상
+        "> 1%",
+        
+        //해당 브라우저 마지막 2버전 까지
+        "last 2 versions"
+    ]
+}
