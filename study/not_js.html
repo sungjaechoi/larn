@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul li{
+        background-color: red;
+    }
+</style>
+<body>
+    <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li id="notli">list item 3</li>
+        <li>list item 4</li>
+        <li>list item 5</li>
+    </ul>
+    
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    // $( "li" ).not( document.getElementById( "notli" ) ).css( "background-color", "red" );
+    //제외 하고 실행해라
+    $("ul").find("li").not("#notli").css("background-color","blue")
+    // ul 부모 요소에서 li 찾고, 그중 #notli 를 제외하고 배경색을 바꿔라
+    </script>
+    
+</body>
+
+</html>
