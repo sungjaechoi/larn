@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                position: relative;
+                background-color: black;
+                height: 1000px;
+                /* cursor: none; */
+            }
+            h1 {
+                color: #fff;
+            }
+            .cursor_item {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                //스크립트의 위치와 상관없이 함수 내의 코드 스크립트는 웹브라우저 내의 모든 요소가 준비가 되어야 실행
+                //해당 함수로 문서 시작 시점으 스크립트를 오버라이딩 함
+                //화면이 다 로드가 된 이후 실행해라
+
+                let h1 = document.getElementsByTagName("h1")[0];
+                let cursor_item = document.getElementsByClassName("cursor_item")[0];
+
+                // document.getElementsByTagName('TagName')[index] -> ('*') TagName 위치에 '*'  들어갈 경우 모든 엘리먼트
+                //주어진 태그명을 반환
+
+                // document.getElementById('id')
+                //어진 문자열과 일치하는 id 속성을 가진 요소를 찾고, 이를 나타내는 Element 객체를 반환
+
+                // document.getElementsByName('name') -> name: 속성값 -> ex) <input type="hidden" name="up" />
+                // 메서드는 문서에서 주어진 속성을 가진 요소 Document의 컬렉션을 반환
+
+                // document.getElementsByClassName('ClassName')
+                // Document에 주어진 클래스 이름을 모두 가진모든 자식 요소의 배열과 유사한 개체를 반환
+
+                window.addEventListener("mousemove", mousefunc, false);
+                // addEventListener(type, listener);
+                // addEventListener(type, listener, options);
+                // addEventListener(type, listener, useCapture);
+                // - type : 선언할 이벤트 유형
+                // - listener(청자) : 해당 이벤트를 인터페이스를 구현할 객체(함수)
+                // - options : 넘사벽.. 이후 다시..
+                // - useCapture : 캡처링의 여부
+                //  ㄴ 캡처링 : window 으로부터 이벤트가 발생한 요소까지 이벤트를 전파한다.
+                //  ㄴ 버블링 : 이벤트가 발생한 요소 부터 window 까지 이벤트를 전파한다.
+                // 시작 시점에 해당 "useCapture" 기본 옵션은 "false" 이며  "true" 설정시
+                // 캡처링을 통해 이벤트를 전파한다.
+                // * 이벤트가 여러개 중첩이 되어 있을때 여러개의 이벤트를 순서대로 발생시켜야하는 상황 혹은 반대의 상황이나 막아야하는 상황에 사용됨.
+
+                // addEventListener 이벤트 종류
+                // load - 웹 페이지의 로드
+                // unload - 새로운 페이지를 요청
+                // error - 브라우저가 자바스크립트 오류를 만났거나 요청한 자원이 없는 경우
+                // resize - 브라우저의 창 크기를 조정했을 때
+                // scroll - 사용자가 페이지를 위아래로 스크롤 할 때
+                // keydown - 사용자가 키를 처음 눌렀을 때
+                // keyup - 키를 땔 때
+                // keypress - 사용자가 눌렀던 키의 문자가 입력되었을 때
+                // click - 사용자가 동일한 요소 위에서 마우스 버튼을 눌렀다 땔 때
+                // dbclick - 두 번 눌렀다 땔 때
+                // mousedown - 마우스를 누르고 있을 때
+                // mouseup - 눌렀던 마우스 버튼을 땔 때
+                // mousemove - 마우스를 움직였을 때
+                // mouseover - 요소 위로 마우스를 움직였을 때
+                // mouseout - 요소 바깥으로 마우스를 움직였을 때
+                // focus - 요소가 포커스를 얻었을 때
+                // focusin - 요소가 포커스를 얻었을 때
+                // blur - 요소가 포커스를 잃었을 때
+                // focusout - 요소가 포커스를 잃었을 때
+                // input - <input>,<textarea>요소 값이 변경되었을 때
+                // change - 선택 상자, 체크박스, 라디오 버튼의 상태가 변경되었을 때
+                // submit - 사용자가 버튼키를 이용하여 폼을 제출할 때
+                // reset - 리셋 버튼을 클릭할 때
+                // cut - 폼 필드의 콘텐츠를 잘라내기 했을 때
+                // copy - 폼 필드의 콘텐츠를 복사했을 때
+                // paste - 폼 필드의 콘텐츠를 붙여넣을 때
+                // select - 텍스트를 선택했을 때
+
+                function mousefunc(e) {
+                    h1.innerHTML = "x: " + e.clientX + " y: " + e.clientY;
+                    // h1.innerHTML = `x: ${e.clientX} y: ${e.clientY}`;
+                    //element.innerHTML: element 안의 HTML이나 XML을 가져옴
+                    //element.innerText: element 안의 text 값들만을 가져옴
+
+                    cursor_item.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px )";
+
+                    //* transform *
+                    // translate(x,y) - 요소의 위치를 X축으로 x만큼, Y축으로 y만큼 이동시킨다.	(단위: px, %, em 등)
+                    // translateX(n) - 요소의 위치를 X축으로 x만큼 이동시킨다.	(단위: px, %, em 등)
+                    // translateY(n) - 요소의 위치를 Y축으로 y만큼 이동시킨다.	(단위: px, %, em 등)
+                    // scale(x,y) - 요소의 크기를 X축으로 x배, Y축으로 y배 확대 또는 축소 시킨다.	(입력값: 0과 양수)
+                    // scaleX(n) - 요소의 크기를 X축으로 x배 확대 또는 축소 시킨다.	(입력값: 0과 양수)
+                    // scaleY(n) - 요소의 크기를 Y축으로 y배 확대 또는 축소 시킨다.	(입력값: 0과 양수)
+                    // skew(x-angle,y-angle) - 요소를 X축으로 x 각도만큼, Y축으로 y 각도만큼 기울인다.	(입력값: +/- 각도, 단위:deg)
+                    // skewX(x-angle) - 요소를 X축으로 x 각도만큼 기울인다.	(입력값: +/- 각도, 단위:deg)
+                    // skewY(y-angle) - 요소를 Y축으로 y 각도만큼 기울인다.	(입력값: +/- 각도, 단위:deg)
+                    // rotate(angle) - 요소를 angle만큼 회전시킨다.	(입력값: +/- 각도, 단위:deg)
+
+                    // cursor_item.style.transform = `translate(${e.clientX}px, ${e.clientX}px)`;
+                    // 최신 스크립트 문법 -> ie 작동 x
+
+                    // console.log(e.clientX, e.clientY);
+
+                    // *clientX,clientY*
+                    // 클라이언트 영역 내의 가로,세로 좌표를 제공  (클라이언트 영역 -> 현재 보이는 브라우저 화면이 기준)
+                    // 브라우저 페이지에서의 X ,y좌표 위치를 반환하나 스크롤은 무시하고 해당 페이지의 상단을 0으로 측정
+                    // *offsetX, offsetY*
+                    // 이벤트 대상이 기준(이벤트 대상 왼쪽 모소리 좌표가 "0 , 화면 기준 x")
+                    //이벤트 대상 객체에서의 상대적 마우스 x, y좌표 위치를 반환
+                    // *pageX, pageY*
+                    // 전체 문서를 기준으로 x,y 좌표를 반환 (스크롤 화면을 포함해서 측정)
+                    // 브라우저 페이지에서의 x, y좌표 위치를 반환
+                    // *screenX, screenY*
+                    // 모니터 화면을 기준으로 좌표를 제공 ->"브라우저 화면이 아니라 자신의 모니터 화면 전체를 기준으로 좌표를 측정"
+                    // 전체 모니터 스크린에서의 x, y좌표 위치를 반환
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h1>test</h1>
+        <div class="cursor_item"></div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                position: relative;
+                background-color: black;
+                /* cursor: none; */
+                margin: 0;
+            }
+            h1 {
+                color: #fff;
+            }
+            .cursor_item {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                margin: -50px 0 0 -50px;
+                background-color: red;
+                transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+                /* 단축문법 */
+                /* transition: <property> <duration> <timing-function> <delay>; */
+
+                /* 기본값: all 0 ease 0 */
+
+                /* transition */
+                /* transition-property: css 속성을 지정 */
+                /* all : 기본값 - 모든 속성에 트렌지션 효과가 나타남 */
+                /* none 아무속성도 트렌지션 효과가 나타나지 않음 */
+                /* property: 트렌지션 효과를 적용하고 싶은 css 속성(하나 이상의 속성을 나열할때 쉼표로 분리함) */
+
+                /* transition-duration: 실행시간 */
+                /* - 반드시 지정해주어야함, 그렇지 않을경우 기본값 0s */
+
+                /* transition-timing-function: 실행되는 동안 속도 설정 */
+                /* transition-delay: 지연시간 */
+            }
+            button {
+                font-size: 40px;
+                font-weight: bold;
+                background: #fff;
+                color: red;
+                padding: 30px 80px;
+                margin: 50px;
+                cursor: pointer;
+                transition: all 0.5s cubic-bezier(0.8, 0, 0.245, 1);
+            }
+            button:hover {
+                background: red;
+                color: #fff;
+                font-size: 80px;
+                padding: 80px 150px;
+            }
+        </style>
+        <script>
+            let h1;
+            let cursor_item;
+            let x = 0;
+            let y = 0;
+            window.onload = function () {
+                cursor_item = document.getElementsByClassName("cursor_item")[0];
+                window.addEventListener("click", mousefunc, false);
+                function mousefunc(e) {
+                    x = e.clientX;
+                    y = e.clientY;
+                    cursor_item.style.transform = "translate(" + x + "px," + y + "px )";
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="cursor_item"></div>
+        <button type="button">START</button>
+    </body>
+</html>
